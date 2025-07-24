@@ -14,7 +14,7 @@ Rails.application.configure do
   config.consider_all_requests_local = false
 
   # Turn on fragment caching in view templates.
-  config.action_controller.perform_caching = 
+  config.action_controller.perform_caching = true
 
   # Cache assets for far-future expiry since they are all digest stamped.
   config.public_file_server.headers = { "cache-control" => "public, max-age=#{1.year.to_i}" }
@@ -33,7 +33,8 @@ Rails.application.configure do
 
   # Log to STDOUT with the current request id as a default log tag.
   config.log_tags = [ :request_id ]
-  config.logger   = ActiveSupport::TaggedLogging.logger(STDOUT)
+  config.logger   = ActiveSupport::TaggedLogging.new(Logger.new(STDOUT))
+
 
   # Change to "debug" to log everything (including potentially personally-identifiable information!)
   config.log_level = ENV.fetch("RAILS_LOG_LEVEL", "info")
