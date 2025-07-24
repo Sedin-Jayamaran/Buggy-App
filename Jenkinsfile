@@ -16,7 +16,7 @@ pipeline {
           $class: 'GitSCM',
           branches: [[name: '*/main']],
           userRemoteConfigs: [[
-            url: 'https://github.com/Sedin-Jayamaran/CI-CD-Buggy.git',
+            url: 'https://github.com/Sedin-Jayamaran/Buggy-App',
             credentialsId: "${env.GIT_CREDENTIALS}"
           ]]
         ])
