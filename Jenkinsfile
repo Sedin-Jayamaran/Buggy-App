@@ -45,7 +45,7 @@ pipeline {
     stage('Build Docker Image') {
       steps {
         sh '''
-          docker build -t $ECR_REPO:$IMAGE_TAG .
+          docker build -f dockerfile.app -t $ECR_REPO:$IMAGE_TAG .
           docker tag $ECR_REPO:$IMAGE_TAG $ECR_REGISTRY/$ECR_REPO:$IMAGE_TAG
         '''
       }
