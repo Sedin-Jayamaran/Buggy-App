@@ -62,9 +62,9 @@ pipeline {
     stage('Deploy to ECS') {
   steps {
     withCredentials([
-      string(credentialsId: 'AWS_ACCESS_KEY_ID', variable: 'AWS_ACCESS_KEY_ID'),
-      string(credentialsId: 'AWS_SECRET_ACCESS_KEY', variable: 'AWS_SECRET_ACCESS_KEY'),
-      string(credentialsId: 'AWS_SESSION_TOKEN', variable: 'AWS_SESSION_TOKEN')
+          string(credentialsId: 'aws-access-key-id', variable: 'AWS_ACCESS_KEY_ID'),
+          string(credentialsId: 'aws-secret-access-key', variable: 'AWS_SECRET_ACCESS_KEY'),
+          string(credentialsId: 'aws-session-token', variable: 'AWS_SESSION_TOKEN')
     ]) {
       sh '''
         export AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID
