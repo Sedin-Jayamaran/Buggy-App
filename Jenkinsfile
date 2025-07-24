@@ -2,10 +2,10 @@ pipeline {
   agent any
 
   environment {
-    AWS_REGION     = 'ap-south-1'
-    ECR_REGISTRY   = '156916773321.dkr.ecr.ap-south-1.amazonaws.com'
-    ECR_REPO       = 'jayamaran/sample-for-ecs'
-    IMAGE_TAG      = 'latest'
+    AWS_REGION      = 'ap-south-1'
+    ECR_REGISTRY    = '156916773321.dkr.ecr.ap-south-1.amazonaws.com'
+    ECR_REPO        = 'jayamaran/sample-for-ecs'
+    IMAGE_TAG       = 'latest'
     GIT_CREDENTIALS = '10962414-951f-44c5-921e-9e1afffe0993'
   }
 
@@ -25,8 +25,7 @@ pipeline {
 
     stage('Docker Login to ECR') {
       steps {
-        withCredentials([[$class: 'AmazonWebServicesCredentialsBinding', credentialsId: 'aws-userpass-creds']]){
-    sh 'aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 156916773321.dkr.ecr.us-east-1.amazonaws.com'} {
+        withCredentials([[$class: 'AmazonWebServicesCredentialsBinding', credentialsId: 'aws-userpass-creds']]) {
           sh '''
             aws configure set aws_access_key_id $AWS_ACCESS_KEY_ID
             aws configure set aws_secret_access_key $AWS_SECRET_ACCESS_KEY
