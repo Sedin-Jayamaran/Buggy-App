@@ -1,10 +1,7 @@
 require "active_support/core_ext/integer/time"
 
-<<<<<<< HEAD
-Rails.application.confgure do
-=======
 Rails.application.configure do
->>>>>>> Jai
+
   # Settings specified here will take precedence over those in config/application.rb.
 
   # Code is not reloaded between requests.
