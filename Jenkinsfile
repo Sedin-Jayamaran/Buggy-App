@@ -6,6 +6,7 @@ pipeline {
     ECR_REGISTRY = '156916773321.dkr.ecr.ap-south-1.amazonaws.com'
     ECR_REPO     = 'jayamaran/sample-for-ecs'
     IMAGE_TAG    = 'latest'
+    GIT_CREDENTIALS = 'github-token'
   }
 
   stages {
