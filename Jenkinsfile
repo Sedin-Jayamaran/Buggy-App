@@ -25,11 +25,8 @@ pipeline {
 
     stage('Docker Login to ECR') {
       steps {
-        withCredentials([usernamePassword(
-          credentialsId: 'aws-userpass-creds',
-          usernameVariable: 'AWS_ACCESS_KEY_ID',
-          passwordVariable: 'AWS_SECRET_ACCESS_KEY'
-        )]) {
+        withCredentials([[$class: 'AmazonWebServicesCredentialsBinding', credentialsId: 'aws-userpass-creds']]){
+    sh 'aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 156916773321.dkr.ecr.us-east-1.amazonaws.com'} {
           sh '''
             aws configure set aws_access_key_id $AWS_ACCESS_KEY_ID
             aws configure set aws_secret_access_key $AWS_SECRET_ACCESS_KEY
