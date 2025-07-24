@@ -2,17 +2,24 @@ pipeline {
   agent any
 
   environment {
-    AWS_REGION   = 'ap-south-1'
-    ECR_REGISTRY = '156916773321.dkr.ecr.ap-south-1.amazonaws.com'
-    ECR_REPO     = 'jayamaran/sample-for-ecs'
-    IMAGE_TAG    = 'latest'
+    AWS_REGION     = 'ap-south-1'
+    ECR_REGISTRY   = '156916773321.dkr.ecr.ap-south-1.amazonaws.com'
+    ECR_REPO       = 'jayamaran/sample-for-ecs'
+    IMAGE_TAG      = 'latest'
     GIT_CREDENTIALS = 'github-token'
   }
 
   stages {
     stage('Checkout Code') {
       steps {
-        git branch: 'main', url: 'https://github.com/Sedin-Jayamaran/CI-CD-Buggy.git'
+        checkout([
+          $class: 'GitSCM',
+          branches: [[name: '*/main']],
+          userRemoteConfigs: [[
+            url: 'https://github.com/Sedin-Jayamaran/CI-CD-Buggy.git',
+            credentialsId: "${env.GIT_CREDENTIALS}"
+          ]]
+        ])
       }
     }
 
