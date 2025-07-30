@@ -9,4 +9,4 @@ RUN RAILS_ENV=production bundle exec rails assets:precompile
  
 EXPOSE 3000
  
-CMD ["bash", "-c", "bundle exec rails db:migrate && rails server -b 0.0.0.0"]
+CMD ["bash", "-c", "RAILS_ENV=production bundle exec rails db:migrate && RAILS_ENV=production rails server -b 0.0.0.0"]
