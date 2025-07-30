@@ -1,0 +1,13 @@
+FROM ruby:3.3.8-alpine
+RUN apk add --no-cache \
+    build-base \
+    libxml2-dev \
+    libxslt-dev \
+    yaml-dev \
+    mariadb-dev \               
+    git \
+    nodejs \
+    yarn \
+    tzdata \
+    bash
+WORKDIR /app
