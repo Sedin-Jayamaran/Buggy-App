@@ -1,4 +1,4 @@
-FROM ruby-3.3.8v1
+FROM 156916773321.dkr.ecr.ap-south-1.amazonaws.com/jayamaran/sample-for-ecs:base
 WORKDIR /app
 COPY Gemfile Gemfile.lock ./
 RUN bundle config set --local without 'development test' && \
