@@ -73,7 +73,7 @@ pipeline {
 
         aws ecs update-service \
           --cluster Jai-Manual-Cluster \
-          --service jai-ecs-web-service-26129xjx \
+          --service jai-ecs-web-service \
           --force-new-deployment \
           --region $AWS_REGION
       '''
